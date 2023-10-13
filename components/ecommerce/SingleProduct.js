@@ -45,7 +45,7 @@ const SingleProduct = ({
                                 />
                                 <img
                                     className="hover-img"
-                                    src={product.images[1].img}
+                                    src={product.gallery[0].img}
                                     alt=""
                                 />
                             </a>

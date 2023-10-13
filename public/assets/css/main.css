@@ -11719,4 +11719,14 @@ footer .hotline img {
 .add-cart a {
   color: #000000;
 }
+
+.pdImage{
+  height: 500px;
+  width: 594px;
+}
+
+.pdImageThumb{
+  height: 95px;
+  width: 200px;
+}
 /*# sourceMappingURL=main.css.map */

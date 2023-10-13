@@ -23,7 +23,7 @@ const ThumbSlider = ({ product }) => {
             >
                 {product.gallery.map((item) => (
                     <SwiperSlide>
-                        <img src={item.thumb} />
+                        <img className="pdImage" src={item.img} />
                         {/* <Zoom
                             img={item.thumb}
                             zoomScale={5}
@@ -45,7 +45,7 @@ const ThumbSlider = ({ product }) => {
             >
                 {product.gallery.map((item) => (
                     <SwiperSlide>
-                        <img src={item.thumb} />
+                        <img className="pdImageThumb" src={item.img} />
                     </SwiperSlide>
                 ))}
             </Swiper>
