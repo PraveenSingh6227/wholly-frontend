@@ -11,6 +11,8 @@ import {
   openCart,
 } from "../redux/action/cart";
 import { useRouter } from 'next/router'
+import { toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
 
 const Cart = ({
   openCart,
@@ -30,6 +32,17 @@ const Cart = ({
     return price;
   };
 
+  const [userDetails, setUserDetails] = useState({});
+
+  useEffect(() => {
+    if (
+      localStorage.getItem('userDetails') &&
+      localStorage.getItem('userDetails') !== undefined
+    ) {
+      setUserDetails(JSON.parse(localStorage.getItem('userDetails')));
+    }
+  },[]);
+
 
   const makePayment = (productData) => {
     // Make API call to the serverless API
@@ -40,8 +53,8 @@ const Cart = ({
     //   },
     //   body: JSON.stringify({ productId }),
     // }).then((t) => t.json());
-    
-    const options = {
+    if(Object.keys(userDetails).length > 0){
+      const options = {
         "key": "rzp_test_v6m14Nwj5tYXzF",
         "amount": price()*100, // 2000 paise = INR 20, amount in paisa
         "productInfo": JSON.stringify(cartItems),
@@ -80,13 +93,15 @@ const Cart = ({
           "color": "#F37254"
         }
       };
-
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
-
-    paymentObject.on("payment.failed", function (response) {
-      alert("Payment failed. Please try again. Contact support for help");
-    });
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+  
+      paymentObject.on("payment.failed", function (response) {
+        alert("Payment failed. Please try again. Contact support for help");
+      });
+    }else{
+      toast("Please login in order to checkout.");
+    }
   };
 
   return (
