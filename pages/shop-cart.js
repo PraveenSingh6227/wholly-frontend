@@ -169,7 +169,7 @@ const Cart = ({
                             </div>
                           </td>
                           <td className="price" data-title="Price">
-                            <h4 className="text-brand">${item.price}</h4>
+                            <h4 className="text-brand">Rs. {item.price}</h4>
                           </td>
                           <td
                             className="text-center detail-info"
@@ -195,7 +195,7 @@ const Cart = ({
                           </td>
                           <td className="text-right" data-title="Cart">
                             <h4 className="text-body">
-                              ${item.quantity * item.price}
+                              Rs. {item.quantity * item.price}
                             </h4>
                           </td>
                           <td className="action" data-title="Remove">
@@ -222,10 +222,13 @@ const Cart = ({
                   </table>
                 </div>
                 <div className="cart-action text-end">
-                  <a className="btn ">
-                    <i className="fi-rs-shopping-bag mr-10"></i>
-                    Continue Shopping
-                  </a>
+                  <Link href="/">
+                    <a className="btn">
+                      <i className="fi-rs-shopping-bag mr-10"></i>
+                      Continue Shopping
+                    </a>
+                  </Link>
+                 
                 </div>
                 <div className="divider center_icon mt-50 mb-50">
                   <i className="fi-rs-fingerprint"></i>
