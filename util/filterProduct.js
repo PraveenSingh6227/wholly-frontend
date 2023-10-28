@@ -3,7 +3,6 @@
 export default (productList, filters) => {
     let filteredList = [...productList];
     for (const key in filters) {
-        console.log('key->',key,'--->',filters,'--->',filters[key])
         if (key !== "price" && key !== "vendor") {
             if (
                 filters[key] === "featured" ||
