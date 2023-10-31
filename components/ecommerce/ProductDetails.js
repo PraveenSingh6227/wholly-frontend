@@ -111,7 +111,11 @@ const ProductDetails = ({
                                             </div>
 
                                             <div className="short-desc mb-30">
-                                                <p className="font-lg">{productData.desc}</p>
+                                                {productData.desc && (
+                                                    <div dangerouslySetInnerHTML={{
+                                                        __html: productData.desc
+                                                      }}></div>
+                                                )}
                                             </div>
                                             <div className="attr-detail attr-color mb-15">
                                                 <strong className="mr-10">Color</strong>
