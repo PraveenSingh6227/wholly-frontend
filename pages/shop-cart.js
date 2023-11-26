@@ -35,6 +35,9 @@ const Cart = ({
   };
 
   const [userDetails, setUserDetails] = useState({});
+  const [shippingCharge, setShippingCharge] = useState("");
+  const [totalShippingAmount, setTotalShippingAmount] = useState(0);
+  const [isBtnAction, setBtnAction] = useState(false);
 
   useEffect(() => {
     if (
@@ -42,9 +45,47 @@ const Cart = ({
       localStorage.getItem('userDetails') !== undefined
     ) {
       setUserDetails(JSON.parse(localStorage.getItem('userDetails')));
+      getShippingCharge()
     }
   },[]);
 
+  const getShippingCharge = () => {
+    const userDetails = JSON.parse(localStorage.getItem('userDetails'))
+    let bodyFormData = new FormData();
+    if(userDetails.city==undefined ||userDetails.city==null || userDetails.city==""){
+      toast("Please go to your account and update your shipping address");
+    }
+    bodyFormData.append('city', userDetails.city);
+    bodyFormData.append('action', 'shipping_charge');
+    fetch(`${server}`, {
+      method: "POST",
+      body: bodyFormData,
+    }).then((response) => response.json()).then((resp)=> {
+      if(resp.status==200){
+        setShippingCharge(resp.charge)
+        getTotalShippingCharge()
+        setBtnAction(false)
+      }else{
+        setBtnAction(true)
+        toast(`Shipping for ${userDetails.city} is not available.`);
+      }
+    });
+  }
+
+  const getTotalShippingCharge = () => {
+    let price = 0;
+    cartItems.forEach((item) => {
+      var w1 = item.selectedVariant.variant_weight
+      var w2 = item.selectedVariant.variant_length*item.selectedVariant.variant_width*item.selectedVariant.variant_height/27000
+      if(w1>w2){
+        price += w1*(item.quantity)
+      }else{
+        price += w2*(item.quantity)
+      }
+      setTotalShippingAmount(price)
+      // (price += (item.selectedVariant.variant_length*item.selectedVariant.variant_width*item.selectedVariant.variant_height) * item.quantity)
+    });
+  }  
 
   const makePayment = (productData) => {
     // Make API call to the serverless API
@@ -66,7 +107,7 @@ const Cart = ({
       }else{
         const options = {
           "key": "rzp_test_v6m14Nwj5tYXzF",
-          "amount": price()*100, // 2000 paise = INR 20, amount in paisa
+          "amount": (price()+(totalShippingAmount*shippingCharge))*100, // 2000 paise = INR 20, amount in paisa
           "productInfo": JSON.stringify(cartItems),
           "name": "Nest Mart And Grocery",
           "description": "Purchase Description",
@@ -82,7 +123,7 @@ const Cart = ({
                 }
               bodyFormData.append('product_info', JSON.stringify(cartItems));
               bodyFormData.append('shipping_info', JSON.stringify(userDetails));
-              bodyFormData.append('total', price());
+              bodyFormData.append('total', price()+(totalShippingAmount*shippingCharge));
               bodyFormData.append('action', 'order_insert');
               bodyFormData.append('transaction_id', response.razorpay_payment_id);
               fetch(`${server}`, {
@@ -625,7 +666,7 @@ const Cart = ({
                               <td className="cart_total_label">Shipping</td>
                               <td className="cart_total_amount">
                                 <i className="ti-gift mr-5"></i>
-                                Free Shipping
+                                INR {totalShippingAmount*shippingCharge}
                               </td>
                             </tr>
                             <tr>
@@ -633,7 +674,7 @@ const Cart = ({
                               <td className="cart_total_amount">
                                 <strong>
                                   <span className="font-xl fw-900 text-brand">
-                                    INR {price()}
+                                    INR {price()+(totalShippingAmount*shippingCharge)}
                                   </span>
                                 </strong>
                               </td>
@@ -643,6 +684,7 @@ const Cart = ({
                       </div>
                       <button
                         className="btn "
+                        disabled={isBtnAction}
                         onClick={() => {
                           makePayment();
                         }}
