@@ -36,7 +36,7 @@ const Header = ({
 
   const fetchAllCategory = async () => {
     // With Category
-    const request = await fetch(`${server}?action=category_list`);
+    const request = await fetch(`${server}/api/index.php?action=category_list`);
     const allCategory = await request.json();
     setCategory(allCategory);
 };

@@ -16,7 +16,7 @@ const NewArrival = () => {
 
     const fetchProducts = async () => {
         // With Category
-        const request = await fetch(`${server}?action=product_list`);
+        const request = await fetch(`${server}/api/index.php?action=product_list`);
         const allProducts = await request.json();
 
         const newArrivalProducts = allProducts.sort(function (a, b) {

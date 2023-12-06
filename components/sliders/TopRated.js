@@ -18,7 +18,7 @@ const TopRatedSlider = () => {
 
     const fetchProducts = async () => {
         // With Category
-        const allProducts = await fetchByCatagory(`${server}?action=product_list`);
+        const allProducts = await fetchByCatagory(`${server}/api/index.php?action=product_list`);
 
         // Discount
         // const discountProduct = allProducts.filter(

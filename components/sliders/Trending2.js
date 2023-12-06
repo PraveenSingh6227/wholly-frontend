@@ -15,7 +15,7 @@ const TrendingSlider = () => {
     const fetchProducts = async () => {
 
         // With Category
-        const allProducts = await fetchByCatagory(`${server}?action=product_list`);
+        const allProducts = await fetchByCatagory(`${server}/api/index.php?action=product_list`);
 
         const trendingItem = allProducts.filter((item) => item.is_trending_products == 1);
         setTrending(trendingItem);

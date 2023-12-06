@@ -33,7 +33,7 @@ const ProductDetails = ({
     const fetchProductByCategorySlug = async () => {
         // With Category
         const slug = Router.query.slug ? Router.query.slug : product.slug
-        const request = await fetch(`${server}?action=product_by_slug&slug=${slug}`);
+        const request = await fetch(`${server}/api/index.php?action=product_by_slug&slug=${slug}`);
         const allProducts = await request.json();
         if(allProducts.variants.length>0){
             setVariantData(allProducts.variants[0]);

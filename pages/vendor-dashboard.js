@@ -28,7 +28,7 @@ const ProductsFullWidth = ({ products, productFilters, fetchProduct }) => {
     let [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        fetchProduct(searchTerm, `${server}?action=product_list`, productFilters);
+        fetchProduct(searchTerm, `${server}/api/index.php?action=product_list`, productFilters);
         cratePagination();
     }, [productFilters, limit, pages, products.items.length]);
 

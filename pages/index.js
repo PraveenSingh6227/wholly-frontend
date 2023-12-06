@@ -26,13 +26,13 @@ export default function Home() {
 
     const fetchAllCategory = async () => {
         // With Category
-        const request = await fetch(`${server}?action=category_list`);
+        const request = await fetch(`${server}/api/index.php?action=category_list`);
         const allCategory = await request.json();
         setCategory(allCategory);
     };
 
     const fetchBanner = async () => {
-        const request = await fetch(`${server}?action=banner_list`);
+        const request = await fetch(`${server}/api/index.php?action=banner_list`);
         const getBanner = await request.json();
         setBanner(getBanner);
     };

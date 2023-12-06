@@ -29,7 +29,7 @@ const Products = ({ products, productFilters, fetchProduct }) => {
     let [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        fetchProduct(searchTerm, `${server}?action=product_list`, productFilters);
+        fetchProduct(searchTerm, `${server}/api/index.php?action=product_list`, productFilters);
         fetchTotalProduct()
         cratePagination();
     }, [productFilters, limit, pages, products.items.length, Router]);
@@ -46,7 +46,7 @@ const Products = ({ products, productFilters, fetchProduct }) => {
 
     const fetchTotalProduct = async () => {
         // With Category
-        const request = await fetch(`${server}?action=product_by_cat&cat_slug=${Router.query.cat}`);
+        const request = await fetch(`${server}/api/index.php?action=product_by_cat&cat_slug=${Router.query.cat}`);
         const allProducts = await request.json();
         setTotalProducts(allProducts);
     };

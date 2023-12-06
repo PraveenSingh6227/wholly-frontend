@@ -1,12 +1,8 @@
 const dev = process.env.NODE_ENV !== "production";
 
-export const server = dev
-    ? "http://localhost/wholly-backend/api/index.php"
-    : "https://nest-nextjs.vercel.app";
+export const server = "https://vrcwebsolutions.com/ecom-admin/admin";
 
-export const imagePath = dev
-    ? "http://localhost/wholly-backend/common/"
-    : "https://nest-nextjs.vercel.app";
+export const imagePath = "https://vrcwebsolutions.com/ecom-admin/admin/";
 
 export const handleFilterImage = (product) => {
     const image = product.img.filter(img => {

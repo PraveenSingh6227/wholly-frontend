@@ -6,7 +6,7 @@ function FeatchDeals() {
     const [deals, setDeals] = useState([]);
 
     const dealsProduct = async () => {
-        const request = await fetch(`${server}?action=product_list`);
+        const request = await fetch(`${server}/api/index.php?action=product_list`);
         const allProducts = await request.json();
         // Discount
         // const discountProduct = allProducts.filter(

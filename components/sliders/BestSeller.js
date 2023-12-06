@@ -12,7 +12,7 @@ const BestSellerSlider = () => {
 
     const fetchProducts = async () => {
         // With Category
-        const allProducts = await fetchByCatagory(`${server}?action=product_list`);
+        const allProducts = await fetchByCatagory(`${server}/api/index.php?action=product_list`);
 
         // Best Seller
         const bestSellerProducts = allProducts.filter((item) => item.is_top_selling == 1);

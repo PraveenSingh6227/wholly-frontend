@@ -21,7 +21,7 @@ const ProductId = ({ product }) => {
 
 ProductId.getInitialProps = async (params) => {
     
-    const request = await fetch(`${server}?action=product_list`);
+    const request = await fetch(`${server}/api/index.php?action=product_list`);
     const data = await request.json();
 
     const index = findProductIndex(data, params.query.slug);

@@ -11,7 +11,7 @@ const Footer = () => {
     }, []);
 
     const fetchBanner = async () => {
-        const request = await fetch(`${server}?action=banner_list`);
+        const request = await fetch(`${server}/api/index.php?action=banner_list`);
         const getBanner = await request.json();
         setBanner(getBanner);
     };
