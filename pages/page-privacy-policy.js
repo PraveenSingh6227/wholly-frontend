@@ -4,7 +4,7 @@ import Layout from "../components/layout/Layout";
 function Privacy() {
     return (
         <>
-            <Layout parent="Home" sub="Pages" subChild="Privacy">
+            <Layout title={"Privacy Policy"} parent="Home" sub="Pages" subChild="Privacy">
             <div className="page-content pt-150 pb-150">
                 <div className="container">
                     <div className="row">

@@ -48,7 +48,7 @@ const ProductTab = ({product,variant}) => {
               bodyFormData.append('rating',reviewRating );
               bodyFormData.append('comment', reviewComment);
               bodyFormData.append('action', 'product_review');
-              fetch(`${server}`, {
+              fetch(`${server}/api/index.php`, {
                 method: "POST",
                 body: bodyFormData,
               })
@@ -71,7 +71,7 @@ const ProductTab = ({product,variant}) => {
     const fetchProductByCategorySlug = async () => {
         // With Category
         const slug = Router.query.slug ? Router.query.slug : productData.slug
-        const request = await fetch(`${server}?action=product_by_slug&slug=${slug}`);
+        const request = await fetch(`${server}/api/index.php?action=product_by_slug&slug=${slug}`);
         const allProducts = await request.json();
         setProductData(allProducts);
     };

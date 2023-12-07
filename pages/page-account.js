@@ -37,7 +37,7 @@ function Account() {
                 bodyFormData.append("user_id", JSON.parse(localStorage.getItem('userDetails')).user_id);
                 bodyFormData.append("action", "order_list");
                 const response = fetch(
-                    server,
+                    server+"/api/index.php",
                     {
                         method: "POST",
                         body: bodyFormData,
@@ -95,7 +95,7 @@ function Account() {
         bodyFormData.append("mobileNo", mobileNo);
         bodyFormData.append("action", "save_address");
         const response = await fetch(
-          server,
+          server+"/api/index.php",
           {
             method: "POST",
             body: bodyFormData,
@@ -168,7 +168,7 @@ function Account() {
     return (
         <>
         {!loading ? (
-            <Layout parent="Home" sub="Pages" subChild="Account">
+            <Layout title={"Account"} parent="Home" sub="Pages" subChild="Account">
                 <div className="page-content pt-150 pb-150">
                     <div className="container">
                         <div className="row">

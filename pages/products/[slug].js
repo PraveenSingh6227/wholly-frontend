@@ -8,7 +8,7 @@ import { server } from "../../config/index";
 const ProductId = ({ product }) => {
     return (
         <>
-        <Layout parent="Home" sub="Shop" subChild={product.title}>
+        <Layout title={product.title} parent="Home" sub="Shop" subChild={product.title}>
             <div className="container">
                 <ProductDetails product={product} />
             </div>

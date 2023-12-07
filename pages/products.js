@@ -21,6 +21,7 @@ const Products = ({ products, productFilters, fetchProduct }) => {
         showLimit = 12,
         showPagination = 4;
         productFilters.cat_slug = Router.query.cat
+        console.log('Router.query.search--->',Router.query)
 
     let [pagination, setPagination] = useState([]);
     let [totalProducts, setTotalProducts] = useState([]);
@@ -58,6 +59,8 @@ const Products = ({ products, productFilters, fetchProduct }) => {
     let start = Math.floor((currentPage - 1) / showPagination) * showPagination;
     let end = start + showPagination;
     const getPaginationGroup = pagination.slice(start, end);
+    const titlex = Router.query.cat
+
 
     const next = () => {
         setCurrentPage((page) => page + 1);
@@ -78,7 +81,7 @@ const Products = ({ products, productFilters, fetchProduct }) => {
     };
     return (
         <>
-            <Layout noBreadcrumb="d-none">
+            <Layout title={titlex ? titlex : "Hot Deals"} noBreadcrumb="d-none">
             <Breadcrumb2/>
                 <section className="mt-50 mb-50">
                     <div className="container mb-30">

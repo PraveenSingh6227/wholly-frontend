@@ -28,7 +28,7 @@ const Cart = ({
 
     return (
         <>
-            <Layout parent="Home" sub="Shop" subChild="Checkout">
+            <Layout title={"Checkout"} parent="Home" sub="Shop" subChild="Checkout">
                 <section className="mt-50 mb-50">
                     <div className="container">
                         <div className="row">

@@ -36,7 +36,7 @@ function Login() {
     bodyFormData.append("password", password);
     bodyFormData.append("action", "user_login");
     const response = await fetch(
-      server,
+      server+"/api/index.php",
       {
         method: "POST",
         body: bodyFormData,
@@ -61,7 +61,7 @@ function Login() {
   return (
     <>
     {!loading ? (
-      <Layout parent="Home" sub="Pages" subChild="Login & Register">
+      <Layout title={"Login"} parent="Home" sub="Pages" subChild="Login & Register">
         <div className="page-content pt-150 pb-150">
           <div className="container">
             <div className="row">

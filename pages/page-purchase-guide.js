@@ -4,7 +4,7 @@ import Layout from "../components/layout/Layout";
 function Guide() {
     return (
         <>
-            <Layout parent="Home" sub="Pages" subChild="Guide">
+            <Layout title={"Purchase Guidelines"} parent="Home" sub="Pages" subChild="Guide">
             <div className="page-content pt-50">
                 <div className="container">
                     <div className="row">

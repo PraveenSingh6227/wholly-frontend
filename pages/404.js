@@ -7,7 +7,7 @@ function Custom404() {
                 parent="Home"
                 sub="Pages"
                 subChild="404"
-               
+               title={"404"}
             >
                 <main className="main page-404">
                     <div className="page-content pt-150 pb-150">

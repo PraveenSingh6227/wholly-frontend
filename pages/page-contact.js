@@ -10,7 +10,7 @@ const Gmap = dynamic(
 function Contact() {
     return (
         <>
-            <Layout parent="Home" sub="Pages" subChild="Contact">
+            <Layout title={"Contact"} parent="Home" sub="Pages" subChild="Contact">
             <div className="page-content pt-50">
                 <div className="container">
                     <div className="row">

@@ -41,7 +41,7 @@ export default function Home() {
         <>
             {/* <IntroPopup /> */}
 
-            <Layout noBreadcrumb="d-none">
+            <Layout title={"Home"} noBreadcrumb="d-none">
                 <section className="home-slider position-relative mb-30">
                     <div className="container">
                         <div className="home-slide-cover mt-30">

@@ -3,7 +3,7 @@ import Layout from "../components/layout/Layout";
 function About() {
     return (
         <>
-            <Layout parent="Home" sub="Pages" subChild="About">
+            <Layout title={"About"} parent="Home" sub="Pages" subChild="About">
             <div className="container  pt-50">
                     <div className="row">
                         <div className="col-xl-10 col-lg-12 m-auto">

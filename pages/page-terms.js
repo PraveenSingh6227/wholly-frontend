@@ -5,7 +5,7 @@ import Layout from "../components/layout/Layout";
 function Terms() {
     return (
         <>
-            <Layout parent="Home" sub="Pages" subChild="Terms">
+            <Layout title={"Terms & Conditions"} parent="Home" sub="Pages" subChild="Terms">
             <div className="page-content pt-50">
                 <div className="container">
                     <div className="row">
